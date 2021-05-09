@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
    Users:any;
-   
+    
   constructor(private Usersobj:UsersService, private AppAuth:AppComponent , private APIResult:APIDataConfig) {
    // AppAuth.ConfigureSSO();
   //   this.Usersobj.getResult().subscribe(Rdata=>{
