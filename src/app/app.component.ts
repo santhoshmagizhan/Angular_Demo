@@ -15,10 +15,127 @@ export class AppComponent {
   title = 'Firstng';
   opened=false;
   Users:any=[];
-  constructor(public dialog: MatDialog, public Oauth:OAuthService, private router:Router , private Usersobj:UsersService, private ApiResult:APIDataConfig) {
   
+  constructor(public dialog: MatDialog, public Oauth:OAuthService, private router:Router , private Usersobj:UsersService, private ApiResult:APIDataConfig) {
+    
+    //1. if or ternary or switch
+    //2. loop for or map*
+    //3. object or array--> add, check, filter.
+
+    //Manipulating existing array
+    let names=['hari','ramkumar','santhosh'];
+
+    //multi array
+    let MA_names=[{'name':'hari','degree':'BCA','hobbies':['games','eating shawarma','roaming']},{'name':'ramkumar','degree':'ECE','hobbies':['reading','killing']},{'name':'santhosh','degree':'BCA','hobbies':['movies','series','games']}];
+
+    console.clear();  
+  
+
+    //looping 
+
+    // not gonna use in angular
+    for(let i=0;i<names.length;i++)
+    {
+      //syntax : variable[index]  -- names[1]
+     console.log(names[i],"For LOOP");
+    }
+    
+    names.forEach(this.testfunction);
+//
+
+//will use in angular
+  names.map((temp:any)=>
+  {
+   console.log(temp,"---> Map =>");
+  });
+
+  names.map(function(temp:any)
+  {
+    console.log(temp,"---> Map function");
+  });
+
+  //checking
+
+  //what is index eg:
+  let name = "Ram Kumar";
+  let index = name.indexOf("mar");
+
+ // alert(index);
+
+  //findindex single array
+  let nameindex= names.findIndex((tempfind:any)=> tempfind==="hari");
+  //alert(nameindex);
+
+  //find index 0 1 2 
+  let nameindex2= MA_names.findIndex((tempfind:any)=> tempfind.name==="ramkumar");
+  //alert(nameindex2);
+
+  //filer match
+  let getfiltered = MA_names.filter((tempfilter:any)=>tempfilter.degree==='BCA');
+  //alert(JSON.stringify(getfiltered));
+
+  //filer unmatched
+  let getfiltered1 = MA_names.filter((tempfilter:any)=>tempfilter.degree!=='BCA');
+  //alert(JSON.stringify(getfiltered1));
+
+  //alert(MA_names[0].hobbies[2]);
+
+  //filter array inside the array
+  
+  let filerinside = MA_names.filter((tempfilter:any)=> {
+    let index=tempfilter.hobbies.indexOf('reading');
+    //ternary 
+    return index!==-1? tempfilter:"";
+
+  });
+  // alert(JSON.stringify(filerinside));
+  //continue... ⬇
+
+ //switch eg.
+   switch (filerinside[0].name) {
+     case 'hari':
+     //  alert('velavan');
+       break;
+       case 'ramkumar':
+     //   alert('shyam ganesh');
+        break;
+     default:
+     //  alert('santhosh');
+       break;
+   }
+
+
+  //looping -- ends
+  
+
+
+
+    
+   
+  //Create an array
+  names.push('thirdperson');
+  //alert(JSON.stringify(names));
+  MA_names.push({'name':'thirdperson','degree':'open university','hobbies':['nothing']});
+  //alert(JSON.stringify(MA_names));
+
+let numberdata:number[]=[];
+  for(let i=0;i<=5;i++)
+  {
+    numberdata.push(i);
+  }
+  
+  alert(numberdata.toString());
+
+
+
+   
   
   }
+
+testfunction(item:any){
+ console.log(item,"For Each");
+}
+
 ProgressBar_SetStatus(Status:boolean)
 {
   let ProgressBar:HTMLElement=document.getElementById("ProgressBars") as HTMLElement;
